@@ -18,7 +18,7 @@ public class AimManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         // Hide cursor
         Cursor.visible = false;
-        //followPoint = standingfollowPoint;
+        followPoint = standingfollowPoint;
     }
 
     // Update is called once per frame
