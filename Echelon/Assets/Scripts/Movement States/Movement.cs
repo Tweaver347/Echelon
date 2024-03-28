@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     Vector3 velocity;
 
-    MovementBaseState currentState;
+    public MovementBaseState currentState;
 
     public IdleState Idle = new IdleState();
     public WalkState Walk = new WalkState();

@@ -7,7 +7,7 @@ public class AimManager : MonoBehaviour
 {
     public Animator anim;
 
-    AimBaseState currentState;
+    public AimBaseState currentState;
     public HipfireState Hip = new HipfireState();
     public AimState Aim = new AimState();
 

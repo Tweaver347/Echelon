@@ -307,8 +307,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 254934238}
-  - component: {fileID: 254934240}
-  - component: {fileID: 254934239}
   m_Layer: 7
   m_Name: AimPos
   m_TagString: Untagged
@@ -331,56 +329,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &254934239
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254934237}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a23c42573267b2640a71df758ab7548b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &254934240
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254934237}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &259748461
 GameObject:
   m_ObjectHideFlags: 0
@@ -3934,6 +3882,7 @@ GameObject:
   - component: {fileID: 6934202129451952166}
   - component: {fileID: 6934202129451952168}
   - component: {fileID: 6934202129451952169}
+  - component: {fileID: 6934202129451952170}
   m_Layer: 7
   m_Name: M4_Carbine
   m_TagString: Untagged
@@ -4191,6 +4140,23 @@ MonoBehaviour:
   kickbackAmount: -1
   kickbackSpeed: 10
   returnSpeed: 20
+--- !u!114 &6934202129451952170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692128185531956538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42de40ff8e1db35459a11399a4b5502a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defualtBloomAngle: 3
+  walkBloomMultiplier: 1.5
+  sprintBloomMultiplier: 2
+  crouchBloomMultiplier: 0.5
+  adsBloomMultiplier: 0.5
 --- !u!4 &7029462072421727101
 Transform:
   m_ObjectHideFlags: 0
