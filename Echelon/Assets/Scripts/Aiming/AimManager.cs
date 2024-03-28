@@ -15,7 +15,7 @@ public class AimManager : MonoBehaviour
     public float adsFOV = 40f;
     public float hipFOV;
     public float currFOV;
-    public float adsSpeed = 100000f;
+    public float adsSpeed = 10f;
 
     [SerializeField] float mouseSensitivity = 1f;
     float xAxis, yAxis;
