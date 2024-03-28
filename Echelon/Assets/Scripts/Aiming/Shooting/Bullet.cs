@@ -22,6 +22,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        collisionSound soundComponent = collision.gameObject.GetComponent<collisionSound>();
+        if (soundComponent != null)
+        {
+            soundComponent.playSound();
+        }
         Destroy(this.gameObject);
+
     }
 }
