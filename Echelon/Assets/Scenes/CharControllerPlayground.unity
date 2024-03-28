@@ -1729,12 +1729,14 @@ MonoBehaviour:
   currFOV: 0
   adsSpeed: 10
   mouseSensitivity: 1
-  followPoint: {fileID: 517993723}
+  camFollowPos: {fileID: 517993723}
   aimPos: {fileID: 254934238}
   aimSmoothSpeed: 20
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 65
+  crouchCameraHeight: 0.6
+  sholderSwapSpeed: 10
 --- !u!114 &2002457526
 MonoBehaviour:
   m_ObjectHideFlags: 0
