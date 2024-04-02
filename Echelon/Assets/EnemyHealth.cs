@@ -11,10 +11,14 @@ public class EnemyHealth : MonoBehaviour
 
     public AudioClip deathSound;
     [SerializeField] private float health = 100;
+    private float timeToDestroy = 20f;
+
+    RagdollManager ragdollManager;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        ragdollManager = GetComponent<RagdollManager>();
     }
     public void takeDamage(float damage)
     {
@@ -43,7 +47,8 @@ public class EnemyHealth : MonoBehaviour
     void EnemyDeath()
     {
         Debug.Log("Enemy Dead");
-        // Destroy(gameObject);
+        ragdollManager.TriggerRagdoll();
+        Destroy(gameObject, timeToDestroy);
     }
 
 }

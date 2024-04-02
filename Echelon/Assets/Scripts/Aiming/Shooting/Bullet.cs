@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float timeToDestroy = 5f;
     public WeaponManager weapon;
+    public Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +20,12 @@ public class Bullet : MonoBehaviour
         {
             soundComponent.playSound();
         }
-        if (collision.gameObject.GetComponentInParent<EnemyHealth>())
+        EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+        if (collision.gameObject.GetComponentInParent<EnemyHealth>() != null)
         {
-            EnemyHealth enemyHealth = collision.gameObject.GetComponentInParent<EnemyHealth>();
             enemyHealth.takeDamage(weapon.damage);
+            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+            rb.AddForce(dir * weapon.enemyKickbackForce, ForceMode.Impulse);
         }
         Destroy(this.gameObject);
 

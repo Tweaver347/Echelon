@@ -32,6 +32,8 @@ public class WeaponManager : MonoBehaviour
     float lightIntensity;
     float lightReturnSpeed = 1;
 
+    public float enemyKickbackForce = 100;
+
     void Start()
     {
         bloom = GetComponent<WeaponBloom>();
@@ -86,6 +88,8 @@ public class WeaponManager : MonoBehaviour
 
             Bullet bulletScript = currbullet.GetComponent<Bullet>();
             bulletScript.weapon = this;
+
+            bulletScript.dir = barrelPos.transform.forward;
 
             Rigidbody rb = currbullet.GetComponent<Rigidbody>();
             rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse);
