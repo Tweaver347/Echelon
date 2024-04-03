@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     Vector3 velocity;
 
-    MovementBaseState currentState;
+    public MovementBaseState currentState;
 
     public IdleState Idle = new IdleState();
     public WalkState Walk = new WalkState();
@@ -29,8 +29,6 @@ public class Movement : MonoBehaviour
 
     public Animator anim;
     public AimManager aimManager;
-
-
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -50,14 +48,12 @@ public class Movement : MonoBehaviour
 
         currentState.UpdateState(this);
     }
-
     public void SwitchState(MovementBaseState newState)
     {
         currentState = newState;
         currentState.EnterState(this);
 
     }
-
     void GetDirectionAndMove()
     {
         horzInput = Input.GetAxis("Horizontal");
@@ -67,7 +63,6 @@ public class Movement : MonoBehaviour
 
         controller.Move(dir.normalized * currentMoveSpeed * Time.deltaTime);
     }
-
     bool IsGrounded()
     {
         spherePos = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
@@ -87,10 +82,5 @@ public class Movement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(spherePos, controller.radius - 0.05f);
     }
 }

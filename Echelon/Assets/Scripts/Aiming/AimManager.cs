@@ -7,7 +7,7 @@ public class AimManager : MonoBehaviour
 {
     public Animator anim;
 
-    AimBaseState currentState;
+    public AimBaseState currentState;
     public HipfireState Hip = new HipfireState();
     public AimState Aim = new AimState();
 
@@ -19,11 +19,17 @@ public class AimManager : MonoBehaviour
 
     [SerializeField] float mouseSensitivity = 1f;
     float xAxis, yAxis;
-    [SerializeField] Transform followPoint;
+    [SerializeField] Transform camFollowPos;
 
     public Transform aimPos;
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimLayerMask;
+
+    float xFollowPos;
+    float yFollowPos, ogYPos;
+    [SerializeField] float crouchCameraHeight = 0.6f;
+    [SerializeField] float sholderSwapSpeed = 10f;
+    Movement moving;
 
     void Start()
     {
@@ -32,6 +38,10 @@ public class AimManager : MonoBehaviour
         // Hide cursor
         Cursor.visible = false;
 
+        moving = GetComponentInParent<Movement>();
+        xFollowPos = camFollowPos.localPosition.x;
+        ogYPos = camFollowPos.localPosition.y;
+        yFollowPos = ogYPos;
         anim = GetComponent<Animator>();
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
 
@@ -48,22 +58,19 @@ public class AimManager : MonoBehaviour
 
         vCam.m_Lens.FieldOfView = Mathf.Lerp(vCam.m_Lens.FieldOfView, currFOV, adsSpeed * Time.deltaTime);
 
-        currentState.UpdateState(this);
-
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2, Screen.height / 2);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimLayerMask))
-        {
             aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
-        }
 
+        cameraFollowPoint();
 
-
+        currentState.UpdateState(this);
     }
     private void LateUpdate()
     {
-        followPoint.localEulerAngles = new Vector3(yAxis, followPoint.localEulerAngles.y, followPoint.localEulerAngles.z);
+        camFollowPos.localEulerAngles = new Vector3(yAxis, camFollowPos.localEulerAngles.y, camFollowPos.localEulerAngles.z);
         transform.localEulerAngles = new Vector3(transform.eulerAngles.x, xAxis, transform.eulerAngles.z);
 
 
@@ -74,4 +81,22 @@ public class AimManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
+    void cameraFollowPoint()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            xFollowPos = -xFollowPos;
+        }
+        if (moving.currentState == moving.Crouch)
+        {
+            yFollowPos = crouchCameraHeight;
+        }
+        else
+        {
+            yFollowPos = ogYPos;
+        }
+
+        Vector3 newFollowPos = new Vector3(xFollowPos, yFollowPos, camFollowPos.localPosition.z);
+        camFollowPos.localPosition = Vector3.Lerp(camFollowPos.localPosition, newFollowPos, sholderSwapSpeed * Time.deltaTime);
+    }
 }
