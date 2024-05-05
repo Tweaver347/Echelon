@@ -11,6 +11,7 @@ public class TimerOff : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         timer.timerIsActive = false;
+        timer.startTime = 0;
         // Set the LastTimeText to the timer after it has stopped
         lastTimeText.text = timer.timerText.text;
     }

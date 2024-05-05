@@ -6,8 +6,11 @@ using TMPro;
 public class StartAndDisplayTimer : MonoBehaviour
 {
     public GameObject textObject;
+    public GameObject prevTextTimerObject;
+    public GameObject prevTextObject;
+    public GameObject[] targets;
     public TextMeshProUGUI timerText;  // Reference to the UI Text component
-    private float startTime;  // Time when the timer was started
+    public float startTime;  // Time when the timer was started
     public bool timerIsActive = false;  // Flag to control the timer status
     public string startTag = "Player";  // Tag to check for collision
 
@@ -41,9 +44,19 @@ public class StartAndDisplayTimer : MonoBehaviour
         if (!timerIsActive && other.gameObject.tag == startTag)  // Check if the timer is not already active
         {
             textObject.SetActive(true);
-            
+            prevTextTimerObject.SetActive(true);
+            prevTextObject.SetActive(true);
+            ResetColorOfTargets();
+            startTime = 0;
             startTime = Time.time;  // Record the start time
             timerIsActive = true;  // Activate the timer
         }
     }
+
+    void ResetColorOfTargets(){
+        foreach(GameObject target in targets){
+            target.GetComponent<Renderer>().material.color = Color.white;
+        }
+    }
+
 }
