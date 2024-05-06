@@ -5,6 +5,7 @@ using TMPro;
 
 public class TimerOff : MonoBehaviour
 {
+    public TrainingAreaObjectiveManger objectiveManager;
     public StartAndDisplayTimer timer;
     public TextMeshProUGUI lastTimeText;
     public GameObject textObject;
@@ -14,5 +15,6 @@ public class TimerOff : MonoBehaviour
         timer.startTime = 0;
         // Set the LastTimeText to the timer after it has stopped
         lastTimeText.text = timer.timerText.text;
+        objectiveManager.shoothouseComplete = true;
     }
 }

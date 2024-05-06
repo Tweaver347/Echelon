@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Bullet
   - Triggers
-  - 
-  - 
+  - Enemy
+  - Object
   - 
   - 
   - 

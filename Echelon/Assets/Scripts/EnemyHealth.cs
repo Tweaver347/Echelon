@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
 
     public AudioClip deathSound;
     [SerializeField] private float health = 100;
-    private float timeToDestroy = 20f;
+    private float timeToDestroy = 5f;
 
     RagdollManager ragdollManager;
 

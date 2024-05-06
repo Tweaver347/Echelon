@@ -6,6 +6,8 @@ public class RagdollManager : MonoBehaviour
 {
     Rigidbody[] rbs;
     Animator anim;
+    public GameObject gunObj;
+    public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,10 @@ public class RagdollManager : MonoBehaviour
     public void TriggerRagdoll()
     {
         anim.enabled = false;
+        // deactivate gun object
+        gunObj.SetActive(false);
+        agent.enabled = false;
+
         foreach (Rigidbody rb in rbs)
         {
             rb.isKinematic = false;

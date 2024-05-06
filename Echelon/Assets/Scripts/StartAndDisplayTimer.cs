@@ -47,7 +47,6 @@ public class StartAndDisplayTimer : MonoBehaviour
             prevTextTimerObject.SetActive(true);
             prevTextObject.SetActive(true);
             ResetColorOfTargets();
-            startTime = 0;
             startTime = Time.time;  // Record the start time
             timerIsActive = true;  // Activate the timer
         }
