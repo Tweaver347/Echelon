@@ -9,12 +9,13 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
     public void OnControls(){
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(5);
     }
     public void OnStorySoFar(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
     public void OnEndButton(){
+        Debug.Log("Quit");
         Application.Quit();
     }
 }

@@ -7,11 +7,11 @@ public class RagdollManager : MonoBehaviour
     Rigidbody[] rbs;
     Animator anim;
     public GameObject gunObj;
-    public UnityEngine.AI.NavMeshAgent agent;
+    public EnemyAI agent;
     // Start is called before the first frame update
     void Start()
     {
-
+        agent = GetComponent<EnemyAI>();
         rbs = GetComponentsInChildren<Rigidbody>();
         anim = GetComponent<Animator>();
         foreach (Rigidbody rb in rbs)
