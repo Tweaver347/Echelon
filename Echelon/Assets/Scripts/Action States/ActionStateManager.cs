@@ -8,7 +8,6 @@ public class ActionStateManager : MonoBehaviour
     public GameObject currentWeapon;
     public WeaponAmmo ammo;
     AudioSource audioSource;
-
     public Animator anim;
 
 
